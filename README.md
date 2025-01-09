@@ -1,7 +1,40 @@
+<p align="center">
+  <a>English</a>
+  ｜
+  <a href="README-es.md">Español</a>
+</p>
 
 # MecanoFlow
 
 MecanoFlow is a typing application designed to improve typing speed and accuracy. The application offers different practice modes and provides detailed statistics about the user's performance.
+
+<p align="center">
+  <img width="55%" alt="mecanoflow_logo" src="res/app_logo.png">
+</p>
+
+<details>
+    <summary><h2>Images</h2></summary>
+    <figure>
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td style="text-align: center;">
+              <img src="https://github.com/user-attachments/assets/b95ae6b2-0c32-49a5-9a25-2d3436c92641" alt="yellow theme" />
+            </td>
+            <td style="text-align: center;">
+              <img src="https://github.com/user-attachments/assets/f0056701-eeff-4ab9-9a4e-5eed9a8035e0" alt="sky theme" />
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align: center;">
+              <img src="https://github.com/user-attachments/assets/8bd7f50f-f5f9-4ba5-9799-bda531923278" alt="coffee theme" />
+            </td>
+            <td style="text-align: center;">
+              <img src="https://github.com/user-attachments/assets/505f2546-abfa-4168-b6f0-bc9f64c200ba" alt="yellow theme chart" />
+            </td>
+          </tr>
+        </table>
+    </figure>
+</details>
 
 ## Installation
 
