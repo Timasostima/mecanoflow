@@ -1,0 +1,7 @@
+Key,label_wpm,label_character_accuracy,label_word_accuracy,label_word_list,label_word_mode,label_incorrect_words,placeholder,restart_tooltip,label_time,label_words,label_extended_wpm,accuracy_label,errors_label,time_label,percentage_label
+English,WPM,Character accuracy,Word accuracy,Word list,Word mode,Incorrect words,Start typing here...,Restart the test,Time,Words,Words Per Minute,Accuracy,Errors,Time (s),Value
+French,PMM,Précision des caractères,Précision des mots,Liste de mots,Mode mot,Mots incorrects,Commencez à taper ici...,Redémarrer le test,Temps,Mots,Mots Par Minute,Précision,Erreurs,Temps (s),Valeur
+Spanish,PPM,Precisión de caracteres,Precisión de palabras,Lista de palabras,Modo palabra,Palabras incorrectas,Empieza a escribir aquí...,Reiniciar la prueba,Tiempo,Palabras,Palabras Por Minuto,Precisión,Errores,Tiempo (s),Valor
+German,SPM,Zeichengenauigkeit,Wortgenauigkeit,Wortliste,Wortmodus,Falsche Wörter,Fangen Sie hier an zu tippen...,Starten Sie den Tipp-Test neu,Zeit,Wörter,Wörter Pro Minute,Genauigkeit,Fehler,Zeit (s),Wert
+Italian,PPM,Precisione dei caratteri,Precisione delle parole,Elenco parole,Modalità parole,Parole errate,Inizia a digitare qui...,Riavvia il test,Tempo,Parole,Parole Per Minuto,Precisione,Errori,Tempo (s),Valore
+Russian,Слов/мин,Точность символов,Точность слов,Список слов,Режим слов,Неправильные слова,Начните печатать здесь...,Перезапустите тест,Время,Слова,Слов в минуту,Точность,Ошибки,Время (с),Значение
