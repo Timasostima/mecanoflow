@@ -1,6 +1,7 @@
 from customtkinter import CTk, CTkToplevel, CTkFrame, CTkLabel
 import customtkinter as ctk
 
+from src.ui.ThemeChooser import ThemeChooser
 from src.ui.charts import ChartFrame
 from src.utils.system_appearence import detect_system_appearance
 from src.ui.typing_app import TypingApp
@@ -9,20 +10,17 @@ from src.ui.app_bar import AppBar
 themes = ["breeze", "coffee", "lavender", "marsh", "metal", "patina", "sky", "yellow"]
 
 
-class Main(CTk):
-    def __init__(self, theme_index=7):
-        super().__init__()
-        self.minsize(800, 350)
+class Main(CTkFrame):
+    def __init__(self, master, theme):
+        super().__init__(master)
         ctk.set_appearance_mode("System")
-        ctk.set_default_color_theme(f"res/themes/{themes[theme_index]}.json")
-        self.title("MecanoFlow")
+        ctk.set_default_color_theme(f"res/themes/{theme}.json")
 
-        self.theme_index = theme_index
+        self.theme = theme
         self.wpm_data = []
         self.acc_data = []
         self.errors_data = []
 
-        # or simply by variable, but it doesn't work with system
         self.system_mode = detect_system_appearance()
         self.is_dark_mode = 1 if self.system_mode == "Dark" else 0
 
@@ -32,15 +30,14 @@ class Main(CTk):
         self.typing_app.pack(expand=True, fill='both')
 
         self.after(5000, self.check_and_update_theme)
-        # self.update_idletasks()
-        # self.show_chart()
 
     def show_chart(self):
         toplevel = CTkToplevel(self, fg_color=ctk.ThemeManager.theme["CTkFrame"]["fg_color"][self.is_dark_mode])
         toplevel.geometry("1000x550")
         toplevel.resizable(False, False)
         toplevel.title("Chart")
-        top_frame = CTkFrame(toplevel, fg_color=ctk.ThemeManager.theme["CTkFrame"]["fg_color"][self.is_dark_mode], corner_radius=0)
+        top_frame = CTkFrame(toplevel, fg_color=ctk.ThemeManager.theme["CTkFrame"]["fg_color"][self.is_dark_mode],
+                             corner_radius=0)
         top_frame.pack(fill='x')
         logo_label = CTkLabel(
             top_frame,
@@ -49,7 +46,8 @@ class Main(CTk):
         )
         logo_label.pack(pady=(7, 5), side='top')
 
-        info = CTkFrame(toplevel, corner_radius=0, fg_color=ctk.ThemeManager.theme["CTkFrame"]["fg_color"][self.is_dark_mode])
+        info = CTkFrame(toplevel, corner_radius=0,
+                        fg_color=ctk.ThemeManager.theme["CTkFrame"]["fg_color"][self.is_dark_mode])
         info.pack(side='left', expand=True)
         CTkLabel(
             info,
@@ -92,19 +90,39 @@ class Main(CTk):
         self.after(3000, self.check_and_update_theme)
 
     def update_all_custom_colors(self):
+        self.app_bar.configure(fg_color=ctk.ThemeManager.theme["CTkFrame"]["fg_color"][self.is_dark_mode])
+
         self.typing_app.configure(fg_color=ctk.ThemeManager.theme["CTkFrame"]["fg_color"][self.is_dark_mode])
-        self.typing_app.middleFrame.configure(border_color=ctk.ThemeManager.theme["CTkFrame"]["top_fg_color"][self.is_dark_mode])
-        self.typing_app.words_conveyor.configure(fg_color=ctk.ThemeManager.theme["CTkFrame"]["fg_color"][self.is_dark_mode])
-        self.typing_app.input_conveyor.configure(fg_color=ctk.ThemeManager.theme["CTkFrame"]["fg_color"][self.is_dark_mode])
+        self.typing_app.middleFrame.configure(
+            border_color=ctk.ThemeManager.theme["CTkFrame"]["top_fg_color"][self.is_dark_mode])
+        self.typing_app.words_conveyor.configure(
+            fg_color=ctk.ThemeManager.theme["CTkFrame"]["fg_color"][self.is_dark_mode])
+        self.typing_app.input_conveyor.configure(
+            fg_color=ctk.ThemeManager.theme["CTkFrame"]["fg_color"][self.is_dark_mode])
         self.typing_app.entry.configure(fg=ctk.ThemeManager.theme["CTkLabel"]["text_color"][self.is_dark_mode])
         self.typing_app.entry.configure(bg=ctk.ThemeManager.theme["CTkFrame"]["fg_color"][self.is_dark_mode])
-        self.typing_app.entry.configure(insertbackground=ctk.ThemeManager.theme["CTkLabel"]["text_color"][self.is_dark_mode])
+        self.typing_app.entry.configure(
+            insertbackground=ctk.ThemeManager.theme["CTkLabel"]["text_color"][self.is_dark_mode])
 
-        self.typing_app.topBar.container.configure(fg_color=ctk.ThemeManager.theme["CTkFrame"]["top_fg_color"][self.is_dark_mode])
+        self.typing_app.topBar.container.configure(
+            fg_color=ctk.ThemeManager.theme["CTkFrame"]["top_fg_color"][self.is_dark_mode])
         self.typing_app.topBar.update_subtype_colors(self.typing_app.topBar.selected_subtype)
         self.typing_app.topBar.update_restart_button()
 
 
 if __name__ == "__main__":
-    root = Main()
+    root = ctk.CTk()
+    root.minsize(800, 350)
+    root.title("MecanoFlow")
+
+    def start_main(selected_theme):
+        for widget in root.winfo_children():
+            widget.destroy()
+        main = Main(root, selected_theme)
+        main.pack(expand=True, fill='both')
+
+    themes = ["breeze", "coffee", "lavender", "marsh", "metal", "patina", "sky", "yellow"]
+    theme_chooser = ThemeChooser(root, themes, start_main)
+    theme_chooser.pack(expand=True, fill='both')
+
     root.mainloop()

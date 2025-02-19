@@ -1,4 +1,3 @@
-# config.py
 languages = ["english", "french", "spanish", "german", "italian", "russian"]
 
 class Colors:
